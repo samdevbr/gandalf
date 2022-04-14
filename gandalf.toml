@@ -1,0 +1,14 @@
+[php]
+version = "5.6"
+
+[php.framework]
+name = "yii"
+version = "1.1"
+
+[[scope]]
+name = "main codebase"
+path = "/home/samuel/dev/studypool/docker/legacy/qanda"
+
+[[scope]]
+name = "extensions"
+path = "/home/samuel/dev/studypool/docker/legacy/qanda/extensions"
