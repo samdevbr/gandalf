@@ -4,26 +4,22 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
-type specification struct {
-	PHP    *php
-	Scopes []scope `toml:"scope"`
+type Specification struct {
+	PHP    *Php
+	Scopes []Scope `toml:"Scope"`
 }
 
-func (spec *specification) hasPhpSettings() bool {
+func (spec *Specification) hasPhpSettings() bool {
 	return spec.PHP != nil
 }
 
-func (spec *specification) hasFramework() bool {
-	return spec.PHP.Framework != nil
-}
-
-func (spec *specification) hasScopes() bool {
+func (spec *Specification) hasScopes() bool {
 	return len(spec.Scopes) > 0
 }
 
-func (spec *specification) validateScopes() error {
+func (spec *Specification) validateScopes() error {
 	for i, scope := range spec.Scopes {
-		err := scope.validate(i, spec.PHP)
+		err := scope.validate(i)
 
 		if err != nil {
 			return err
@@ -33,7 +29,7 @@ func (spec *specification) validateScopes() error {
 	return nil
 }
 
-func (spec *specification) validate() error {
+func (spec *Specification) validate() error {
 	if !spec.hasPhpSettings() {
 		return ErrSpecWithoutPhpSettings
 	}
@@ -55,8 +51,8 @@ func (spec *specification) validate() error {
 	return nil
 }
 
-func New(specificationFile string) (*specification, error) {
-	var spec specification
+func New(specificationFile string) (*Specification, error) {
+	var spec Specification
 
 	_, err := toml.DecodeFile(specificationFile, &spec)
 

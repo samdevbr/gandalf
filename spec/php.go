@@ -2,12 +2,12 @@ package spec
 
 import "strings"
 
-type php struct {
+type Php struct {
 	Version   string
-	Framework *framework
+	Framework *Framework
 }
 
-func (p *php) hasValidVersion() bool {
+func (p *Php) hasValidVersion() bool {
 	parts := strings.Split(p.Version, ".")
 
 	if len(parts) > 3 || len(parts) < 2 {

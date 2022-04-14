@@ -6,8 +6,8 @@ import (
 )
 
 var ErrSpecWithoutScopes = errors.New("specification without scopes")
-var ErrUnsupportedPhpVersion = errors.New("unsupported php version")
-var ErrSpecWithoutPhpSettings = errors.New("specification without php settings")
+var ErrUnsupportedPhpVersion = errors.New("unsupported Php version")
+var ErrSpecWithoutPhpSettings = errors.New("specification without Php settings")
 
 var ErrScopeWithoutName = func(index int) error {
 	return errors.New(fmt.Sprintf("scope does not have a name: index %d", index))

@@ -1,6 +1,6 @@
 package spec
 
-type framework struct {
+type Framework struct {
 	Name    string
 	Version string
 }
