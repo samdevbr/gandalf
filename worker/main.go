@@ -21,6 +21,8 @@ func (w *worker) Start(wg *sync.WaitGroup) {
 
 		if errors.Is(err, queue.ErrQueueIsEmpty) {
 			break
+		} else if err != nil {
+			log.Fatalln(err)
 		}
 
 		source, err := os.ReadFile(filename)
